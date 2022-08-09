@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="icon" type="image/x-icon" href="./img/to-do-list.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
+</head>
+<script>
+    window.onload = function() {
+  document.getElementById("txt").focus();
+}
+</script>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    }
+
+    body {
+        background: rgb(238, 174, 202);
+        background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+        text-align: center;
+    }
+
+    h1 {
+        text-align: center;
+        color: white;
+        font-size: 3rem;
+        margin-top: 1em;
+    }
+
+    .container {
+        width: 50%;
+        background-color: rgba(230, 237, 243, 0.719);
+        margin: auto;
+        height: 60vh;
+        border-radius: 5px;
+        margin-top: 5px;
+        padding: 20px 15px;
+        overflow: auto;
+
+    }
+
+    input {
+        width: 50%;
+        margin-top: 20px;
+        padding: 10px;
+        /* margin-left: 25%; */
+        border: 0px;
+        outline: 0px;
+        border-radius: 10px;
+    }
+
+    button {
+        border: none;
+        width: 10%;
+        font-size: 18px;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 10px 600px;
+        cursor: pointer;
+    }
+    
+    .list {
+        width: 100%;
+        background-color: rgba(17, 17, 17, 0.603);
+        border-radius: 5px;
+        padding: 10px 5px;
+        color: white;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+    
+    .close {
+        float: right;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <h1>To Do Application.</h1>
+    <div class="container">
+        <div class="lii"></div>
+    </div>
+    <input type="text" id="txt" placeholder="Add Your Items !!!">
+    <button id="btn" onclick="addItem()">Add Item</button>
+
+    <script>
+        function addItem() {
+            if(document.querySelector('#txt').value != ""){
+            document.querySelector('.lii').innerHTML +=
+                `<div class='list'> 
+            ${document.querySelector('#txt').value}  <i class="fa-solid fa-xmark close"></i>`
+
+            document.querySelector('#txt').value = "";
+            }    
+            else{
+                alert("Enter something to Add!");
+                document.getElementById('#txt').focus();
+            }    
+
+            var current_tasks = document.querySelectorAll(".close");
+            for (var i = 0; i < current_tasks.length; i++) {
+                current_tasks[i].onclick = function () {
+                    this.parentNode.remove();
+                }
+            }
+        }
+
+        
+
+    </script>
+</body>
+
+</html>
