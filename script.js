@@ -59,9 +59,9 @@ function checkBoxClick() {
     var checkbox = document.querySelectorAll("#myCheckbox");
     var title = document.querySelectorAll(".title");
     for (let i = 0; i < checkbox.length; i++) {
-        if (checkbox[i].checked != false) {
+        if (checkbox[i].unchecked != false) {
             title[i].classList.toggle("checked");
         }
-        title[i].classList("");
+        
     }
 }
