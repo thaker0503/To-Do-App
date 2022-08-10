@@ -17,9 +17,9 @@ function popUp() {
 function addItem() {
     if (document.querySelector('#txt').value != "") {
         document.querySelector('.lii').innerHTML +=
-            `<div class='list' id="list"> 
+            `<div class='list' id="list${c}"> 
         
-        <input type="checkbox" id="a${c}"  onclick="checkBoxClick(this.id)" class="checkBox myCheckbox"/> 
+        <input type="checkbox" id="a${c}" name="checkBoxx" onclick="checkBoxClick(this.id)" class="checkBox myCheckbox"/> 
         <span class="todo-description"> 
             <span class="title" id="title_a${c}"> ${document.querySelector('#txt').value}</span> 
             <span id="displayDate">${new Date().toLocaleString()}</span> 
@@ -78,30 +78,30 @@ function addItem() {
 //   }
 
   function checkBoxClick(id) {
-    var checkbox = document.getElementById(`${id}`);
+    var checkbox = document.getElementsByName("checkBoxx");
     var title = document.getElementById(`title_${id}`);
-    var list = document.getElementById("list");
+    var list = document.getElementById(`list${id}`);
     var done = document.getElementById("lii-done");
     var todo = document.getElementById("todo");
-      
-        if (checkbox.checked) {
-          console.log(list);
-            title.classList.toggle("checked");
-            // list.style.display = "none";
-            // done.appendChild(list);
-            // list.style.display = "inline-flex"; 
-          }
-          else{
-            if(title.classList.contains("checked")){
-              title.classList.remove("checked");
-              // list.style.display = "none";
-              // todo.appendChild(list);
-              // list.style.display = "inline-flex"; 
-
-            }
-        }   
     
-}
+    for (let i = 0; i < checkbox.length; i++) {
+      if (checkbox[i].checked) {
+          title.classList.toggle("checked");
+          checkbox[i].parentNode.style.display = "none";
+          done.appendChild(checkbox[i].parentNode);
+          checkbox[i].parentNode.style.display = "inline-flex"; 
+        }
+        else{
+          if(title.classList.contains("checked")){
+            console.log("else => ", title.classList);
+            title.classList.remove("checked");
+            checkbox[i].parentNode.style.display = "none";
+            todo.appendChild(list);
+            checkbox[i].parentNode.style.display = "inline-flex"; 
+          }
+      } 
+    }  
+  }
 
 $(document).ready(function() {
     $("button").click(function() {
