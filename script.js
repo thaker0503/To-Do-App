@@ -1,6 +1,6 @@
+let c=1;
 window.onload = function () {
     document.getElementById("txt").focus();
-    // window.addEventListener('load', checkAll, false);
 }
 $(document).keypress(function (e) {
     if (e.which == 13) {
@@ -17,11 +17,11 @@ function popUp() {
 function addItem() {
     if (document.querySelector('#txt').value != "") {
         document.querySelector('.lii').innerHTML +=
-            `<div class='list'> 
+            `<div class='list' id="list"> 
         
-        <input type="checkbox" onclick="checkBoxClick()" class="checkBox myCheckbox"/> 
+        <input type="checkbox" id="a${c}"  onclick="checkBoxClick(this.id)" class="checkBox myCheckbox"/> 
         <span class="todo-description"> 
-            <span class="title"> ${document.querySelector('#txt').value}</span> 
+            <span class="title" id="title_a${c}"> ${document.querySelector('#txt').value}</span> 
             <span id="displayDate">${new Date().toLocaleString()}</span> 
         </span>  
         <i id="del" class="fa-solid fa-trash-can fa-xs close"></i> `;
@@ -44,35 +44,65 @@ function addItem() {
             this.parentNode.remove();
         }
     }
-
+    c+=1
 }
 
-function checkBoxClick() {
-    var checkbox = document.querySelectorAll(".myCheckbox");
-    var title = document.querySelectorAll(".title");
-    var list = document.querySelectorAll(".list");
+// function checkBoxClick(id) {
+//     var checkbox = document.getElementById(`${id}`);
+//     var title = document.getElementById(`title_${id}`);
+    // var list = document.getElementById(`list${id}`);
+    // var done = document.getElementById("#lii-done");
+    // var todo = document.getElementById("#todo");
+//     if(checkbox.checked){
+//       title.classList.remove("unchecked");
+//       title.classList.toggle("checked");
+      
+//       list.style.display = "none";
+//       done.appendChild(list);
+      // list.classList.toggle("list");
+      // list.style.display = "inline-flex"; 
+      
+//     }
+//     else{
+//       title.classList.remove("checked");
+//       title.classList.toggle("unchecked");
+      
+      // list.style.display = "none";
+      // todo.appendChild(list);
+//       list.classList.add("list");
+//       list.style.display = "inline-flex";
+      
+//     }
+    
+        
+//   }
+
+  function checkBoxClick(id) {
+    var checkbox = document.getElementById(`${id}`);
+    var title = document.getElementById(`title_${id}`);
+    var list = document.getElementById("list");
     var done = document.getElementById("lii-done");
     var todo = document.getElementById("todo");
-    for (let i = 0; i < checkbox.length; i++) {
-        if (checkbox[i].checked != false) {
-            title[i].classList.toggle("checked");
-                // list[i].style.display = "none";
-                // done.appendChild(list[i]);
-                // list[i].classList.add("list");
-                // list[i].style.display = "inline-flex"; 
-        }
-        else {
-            // title[i].classList.remove("checked");
-            // list[i].style.display = "none";
-            // todo.appendChild(list[i]);
-            // list[i].classList.add("list");
-            // list[i].style.display = "inline-flex";
-                
-        }
-        
-        
-    }
+      
+        if (checkbox.checked) {
+          console.log(list);
+            title.classList.toggle("checked");
+            // list.style.display = "none";
+            // done.appendChild(list);
+            // list.style.display = "inline-flex"; 
+          }
+          else{
+            if(title.classList.contains("checked")){
+              title.classList.remove("checked");
+              // list.style.display = "none";
+              // todo.appendChild(list);
+              // list.style.display = "inline-flex"; 
+
+            }
+        }   
+    
 }
+
 $(document).ready(function() {
     $("button").click(function() {
       $("#container").append($("#submit"));
