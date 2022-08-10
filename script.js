@@ -48,6 +48,8 @@ function addItem() {
 }
 
 
+
+
 function checkBoxClick(){
    //create an array of all the checkboxes
 var checkboxes = document.querySelectorAll('.checkBox');
@@ -83,10 +85,6 @@ $(document).ready(function() {
       $("#container").append($("#submit"));
     })
   });
-
-
-
-
 
 
 var acc = document.getElementsByClassName("container");
