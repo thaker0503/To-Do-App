@@ -16,13 +16,30 @@
 
 <body>
     <h1>To Do Application.</h1>
-    <div class="container">
-        <div class="lii">
-            
-        </div>
-    </div>
+    <div class="popup" onclick="popUp()">
+        <span class="popuptext" id="myPopup">Please type something to add...</span>
+      </div>
     <input type="text" id="txt" placeholder="Add Your Items !!!">
+    
     <button id="btn" onclick="addItem()">Add Item</button>
+
+    
+    <button class="container" >To Do</button>
+    <div class="lii" id="todo">
+        <p></p>
+    </div>
+
+    <button class="container" id="done">Done</button>
+    <div class="lii" id="lii-done">
+        <p></p>
+    </div>
+
+    <!-- <div class="container">
+        To- Do
+        <div class="lii">
+            <div class="list">Demo</div>
+        </div>
+    </div> -->
 
     
 </body>
