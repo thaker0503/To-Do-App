@@ -1,5 +1,6 @@
 window.onload = function () {
     document.getElementById("txt").focus();
+    window.addEventListener('load', checkAll, false);
 }
 $(document).keypress(function (e) {
     if (e.which == 13) {
@@ -14,7 +15,7 @@ function addItem() {
         document.querySelector('.lii').innerHTML +=
             `<div class='list'> 
         
-        <input type="checkbox" id="myCheckbox" onclick="checkBoxClick()" class="checkBox"/> 
+        <input type="checkbox" onclick="checkBoxClick()" class="checkBox myCheckbox"/> 
         <span class="todo-description"> 
             <span class="title"> ${document.querySelector('#txt').value}</span> 
             <span id="displayDate">${new Date().toLocaleString()}</span> 
@@ -35,33 +36,22 @@ function addItem() {
         }
     }
 
-
-
-
-
-    // for (var i=0; i<checkbox.length; i++){
-    //     checkbox[i].onclick = function() {
-    //         title[i].classList.toggle('checked');
-    //     }
-    // }
-
-    // Add a "checked" symbol when clicking on a list item
-    // var checkbox = document.querySelector('.checkBox');
-    // checkbox.addEventListener('click', function(ev) {
-    // if (ev.target. === 'checkBox') {
-    //     ev.target.classList.toggle('checked');
-    // }
-    // }, false);
-
 }
 
 function checkBoxClick() {
-    var checkbox = document.querySelectorAll("#myCheckbox");
+    var checkbox = document.querySelectorAll(".myCheckbox");
     var title = document.querySelectorAll(".title");
     for (let i = 0; i < checkbox.length; i++) {
-        if (checkbox[i].unchecked != false) {
+        if (checkbox[i].checked != false) {
             title[i].classList.toggle("checked");
         }
+        else if(checkbox[i].unchecked != false){
+            if(title[i].classList.contains("checked")){
+                title[i].classList.remove("checked");
+            }
+
+        }
+        
         
     }
 }
