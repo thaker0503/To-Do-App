@@ -1,4 +1,4 @@
-let c=1;
+
 window.onload = function () {
     document.getElementById("txt").focus();
 }
@@ -17,11 +17,11 @@ function popUp() {
 function addItem() {
     if (document.querySelector('#txt').value != "") {
         document.querySelector('.lii').innerHTML +=
-            `<div class='list' id="list${c}"> 
+            `<div class='list' > 
         
-        <input type="checkbox" id="a${c}" name="checkBoxx" onclick="checkBoxClick(this.id)" class="checkBox myCheckbox"/> 
+        <input type="checkbox"  name="checkBoxx" onclick="checkBoxClick()" class="checkBox myCheckbox"/> 
         <span class="todo-description"> 
-            <span class="title" id="title_a${c}"> ${document.querySelector('#txt').value}</span> 
+            <span class="title"> ${document.querySelector('#txt').value}</span> 
             <span id="displayDate">${new Date().toLocaleString()}</span> 
         </span>  
         <i id="del" class="fa-solid fa-trash-can fa-xs close"></i> `;
@@ -44,64 +44,39 @@ function addItem() {
             this.parentNode.remove();
         }
     }
-    c+=1
+    
 }
 
-// function checkBoxClick(id) {
-//     var checkbox = document.getElementById(`${id}`);
-//     var title = document.getElementById(`title_${id}`);
-    // var list = document.getElementById(`list${id}`);
-    // var done = document.getElementById("#lii-done");
-    // var todo = document.getElementById("#todo");
-//     if(checkbox.checked){
-//       title.classList.remove("unchecked");
-//       title.classList.toggle("checked");
-      
-//       list.style.display = "none";
-//       done.appendChild(list);
-      // list.classList.toggle("list");
-      // list.style.display = "inline-flex"; 
-      
-//     }
-//     else{
-//       title.classList.remove("checked");
-//       title.classList.toggle("unchecked");
-      
-      // list.style.display = "none";
-      // todo.appendChild(list);
-//       list.classList.add("list");
-//       list.style.display = "inline-flex";
-      
-//     }
-    
-        
-//   }
 
-  function checkBoxClick(id) {
-    var checkbox = document.getElementsByName("checkBoxx");
-    var title = document.getElementById(`title_${id}`);
-    var list = document.getElementById(`list${id}`);
-    var done = document.getElementById("lii-done");
-    var todo = document.getElementById("todo");
-    
-    for (let i = 0; i < checkbox.length; i++) {
-      if (checkbox[i].checked) {
-          title.classList.toggle("checked");
-          checkbox[i].parentNode.style.display = "none";
-          done.appendChild(checkbox[i].parentNode);
-          checkbox[i].parentNode.style.display = "inline-flex"; 
-        }
-        else{
-          if(title.classList.contains("checked")){
-            console.log("else => ", title.classList);
-            title.classList.remove("checked");
-            checkbox[i].parentNode.style.display = "none";
-            todo.appendChild(list);
-            checkbox[i].parentNode.style.display = "inline-flex"; 
-          }
-      } 
-    }  
-  }
+function checkBoxClick(){
+   //create an array of all the checkboxes
+var checkboxes = document.querySelectorAll('.checkBox');
+var done = document.getElementById("lii-done");
+var todo = document.getElementById("todo");
+//loop through the array and add an event listener to each checkbox
+for (var i = 0; i < checkboxes.length; i++) {
+  checkboxes[i].addEventListener('change', function() {
+    //if the checkbox is checked
+    if (this.checked) {
+      //add the checked class to the parent label
+      this.parentNode.classList.add('checked');
+      this.parentNode.style.display = "none";
+      //append the parent label to the done list
+      done.appendChild(this.parentNode);
+      this.parentNode.style.display = "inline-flex";
+
+    } else {
+      //remove the checked class from the parent label
+      this.parentNode.classList.remove('checked');
+      this.parentNode.style.display = "none";
+      //append the parent label to the todo list
+      todo.appendChild(this.parentNode);
+      this.parentNode.style.display = "inline-flex";
+    }
+  });
+}
+}
+
 
 $(document).ready(function() {
     $("button").click(function() {

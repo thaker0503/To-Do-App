@@ -11,6 +11,7 @@ body {
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
+    align-items: center;
 }
 
 h1 {
@@ -42,13 +43,11 @@ h1 {
   }
   
   .lii, .lii-done {
-    margin-left: 350px;
     width: 45%;
     padding: 10px 18px;
     max-height: 0;
     overflow: hidden auto;
     transition: max-height 0.2s ease-out;
-    /* position: absolute; */
   }
   .lii::-webkit-scrollbar, .lii-done::-webkit-scrollbar{
     display: none;
@@ -67,11 +66,11 @@ input {
 
 #btn {
     border: none;
-    width: 10%;
+    width: 200px;
     font-size: 18px;
     padding: 10px;
     border-radius: 5px;
-    margin: 0px 600px;
+    /* margin: 0px 600px; */
     cursor: pointer;
     color: rgb(22, 22, 22);
     background-color: rgba(184, 247, 226, 0.733);

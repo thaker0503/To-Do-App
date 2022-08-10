@@ -3,63 +3,55 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-.container {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 50%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  transition: 0.4s;
-}
-
-.active, .container:hover {
-  background-color: #ccc;
-}
-
-.lii {
-    width: 50%;
-  padding: 10px 18px;
-  background-color: white;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-}
+  .checked{
+    text-decoration: line-through;
+  }
 </style>
 </head>
 <body>
 
-
-<button class="container">To Do</button>
-<div class="lii">
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos eius aspernatur excepturi, deserunt exercitationem dicta veniam unde numquam quis necessitatibus laboriosam nobis vitae ratione pariatur provident alias illum temporibus quibusdam.</p>
-</div>
-
-<button class="container">Done</button>
-<div class="lii">
-  
-</div>
-
+  <label>
+    <input type="checkbox" class="h" onclick="check()" name="checkbox" value="forcefield">
+    Enable forcefield
+ </label>
+ <label>
+   <input type="checkbox" class="h" onclick="check()" name="checkbox" value="invisibilitycloak">
+   Enable invisibility cloak
+ </label>
+ <label>
+   <input type="checkbox" class="h" onclick="check()" name="checkbox" value="warpspeed">
+   Enable warp speed
+ </label>
 
 
 <script>
-var acc = document.getElementsByClassName("container");
-var i;
+// Select all checkboxes with the name 'settings' using querySelectorAll.
+// var checkboxes = document.querySelectorAll("input[type=checkbox]");
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    } 
-  });
-}
+
+
+
+
+
+// let enabledSettings = []
+
+// /*
+// For IE11 support, replace arrow functions with normal functions and
+// use a polyfill for Array.forEach:
+// https://vanillajstoolkit.com/polyfills/arrayforeach/
+// */
+
+// // Use Array.forEach to add an event listener to each checkbox.
+// checkboxes.forEach(function(checkbox) {
+//   checkbox.addEventListener('change', function() {
+//     enabledSettings = 
+//       Array.from(checkboxes) // Convert checkboxes to an array to use filter and map.
+//       .filter(i => i.checked) // Use Array.filter to remove unchecked checkboxes.
+//       .map(i => i.value) // Use Array.map to extract only the checkbox values from the array of objects.
+      
+//     console.log(enabledSettings)
+//   })
+// });
 </script>
 
 </body>
